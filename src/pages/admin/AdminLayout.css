@@ -1,0 +1,18 @@
+/* src/pages/admin/AdminLayout.css */
+
+.admin-layout {
+  display: flex;
+}
+
+.admin-content {
+  margin-left: 220px; /* width of sidebar */
+  padding: 40px;
+  flex: 1;
+}
+
+.access-denied {
+  margin: 100px auto;
+  text-align: center;
+  font-size: 1.5rem;
+  color: crimson;
+}

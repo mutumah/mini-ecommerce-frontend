@@ -1,0 +1,99 @@
+.admin-sidebar {
+    position: fixed;
+    top: 60px; /* start after navbar */
+    left: 0;
+    width: 220px;
+
+    /* subtract both navbar and footer height */
+    height: calc(100% - 60px - 80px); /* 80px = footer height */
+    
+    background-color: #222;
+    color: white;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    z-index: 999;
+    transition: transform 0.3s ease;
+}
+
+
+.admin-sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #f2f4ff;
+    text-align: center;
+}
+
+.sidebar-links {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: #d8dbe6;
+    text-decoration: none;
+    transition: background-color .18s, color .18s, transform .08s;
+    font-weight: 500;
+}
+
+.sidebar-link:hover {
+    background: rgba(255,255,255,0.03);
+    color: #fff;
+    transform: translateX(4px);
+}
+
+.sidebar-link.active {
+    background: linear-gradient(90deg,#2d2d66,#1bb89b);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(27,184,155,0.12);
+}
+
+/* Small screen: slide-out behavior */
+@media (max-width: 768px) {
+    .admin-sidebar {
+        width: 180px;
+        transform: translateX(-100%);
+        position: fixed;
+    }
+
+    .admin-sidebar.open {
+        transform: translateX(0);
+    }
+}
+
+/* Toggle button for mobile */
+.sidebar-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .sidebar-toggle {
+        display: block;
+        position: fixed;
+        top: 70px; /* just under navbar */
+        left: 10px;
+        background-color: #1bb89b;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+        z-index: 1001;
+    }
+}

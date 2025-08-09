@@ -1,0 +1,56 @@
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.admin-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 220px; /* leave space for sidebar */
+    margin-top: 60px; /* leave space for navbar */
+}
+
+@media (max-width: 768px) {
+    .admin-content {
+        margin-left: 0; /* no permanent sidebar space on small screens */
+        margin-top: 60px;
+    }
+}
+
+.admin-table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+
+.admin-table th,
+.admin-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.admin-table th {
+    background-color: #f4f4f4;
+}
+
+.btn-edit {
+    background: orange;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.btn-delete {
+    background: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+}
