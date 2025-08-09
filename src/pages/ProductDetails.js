@@ -51,27 +51,32 @@ const ProductDetails = () => {
   if (loading) return <div className="loading-spinner">Loading...</div>;
   if (error) return <div className="error-message">{error}</div>;
 
-  // ✅ Improved image logic with fallback
+
+// Use the backend URL from environment variables
+const backendBaseUrl = process.env.REACT_APP_API_URL?.replace(/\/$/, ""); // remove trailing slash if any
+
 const imageSrc = product?.imageUrl
   ? product.imageUrl.startsWith("http")
     ? product.imageUrl
-    : `${window.location.origin.replace(":3000", ":5000")}${product.imageUrl}`
+    : `${backendBaseUrl}${product.imageUrl}`
   : "/images/placeholder.jpg";
+
 console.log("Resolved image URL:", imageSrc);
 
-  return (
-    <div className="product-details-container">
-      <div className="product-details-content">
-        <div className="product-details-image">
-          <img
-            src={imageSrc}
-            alt={product.name}
-            crossOrigin="anonymous"
-            onError={(e) => {
-              e.target.src = "/images/placeholder.jpg";
-            }}
-          />
-        </div>
+return (
+  <div className="product-details-container">
+    <div className="product-details-content">
+      <div className="product-details-image">
+        <img
+          src={imageSrc}
+          alt={product.name}
+          crossOrigin="anonymous"
+          onError={(e) => {
+            e.target.src = "/images/placeholder.jpg";
+          }}
+        />
+      </div>
+
         <div className="product-details-info">
           {success && <div className="success-message">Added to Cart! 🛒</div>}
 
