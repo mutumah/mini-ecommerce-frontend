@@ -10,12 +10,23 @@ const Product = ({ product }) => {
   const handleAddToCart = () => {
     dispatch(addToCart({ ...product, quantity: 1 }));
   };
-  const imageSrc = product.imageUrl || "/images/placeholder.png";
+
+  // ✅ Get backend base URL from environment variable
+  const backendBaseUrl = process.env.REACT_APP_API_URL?.replace(/\/$/, "");
+
+  // ✅ Fix image path handling
+  const imageSrc = product?.imageUrl
+    ? product.imageUrl.startsWith("http")
+      ? product.imageUrl
+      : `${backendBaseUrl}${product.imageUrl}`
+    : "/images/placeholder.png";
+
   return (
     <div className="product-card" data-aos="fade-up">
       <img
         src={imageSrc}
         alt={product.name}
+        crossOrigin="anonymous"
         onError={(e) => { e.target.src = "/images/placeholder.png"; }}
       />
       <h3>{product.name}</h3>
@@ -24,7 +35,9 @@ const Product = ({ product }) => {
         <Link to={`/products/${product._id}`}>
           <button className="view-btn">View</button>
         </Link>
-        <button className="add-btn" onClick={handleAddToCart}>Add to Cart</button>
+        <button className="add-btn" onClick={handleAddToCart}>
+          Add to Cart
+        </button>
       </div>
     </div>
   );
