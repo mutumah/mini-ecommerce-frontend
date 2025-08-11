@@ -2,12 +2,12 @@
 
 .auth-container {
     max-width: 400px;
-    margin: 60px auto;
-    padding: 30px;
+    margin: 0 auto; /* center horizontally */
+    padding: 100px 30px 30px; /* top padding to clear navbar */
     border-radius: 8px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     background-color: white;
-  }
+}
   
   .auth-header {
     text-align: center;
@@ -115,12 +115,12 @@
   }
   
   /* Responsive adjustments */
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
     .auth-container {
-      max-width: 100%;
-      margin: 0;
-      border-radius: 0;
-      box-shadow: none;
-      padding: 20px;
+        max-width: 100%;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 90px 20px 20px; /* adjust top padding for navbar height on small screens */
     }
-  }
+}
