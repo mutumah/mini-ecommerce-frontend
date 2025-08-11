@@ -63,8 +63,20 @@ const MyOrders = () => {
 };
 
 const styles = {
-    container: { padding: "20px", textAlign: "center" },
-    orderCard: { border: "1px solid #ccc", padding: "15px", marginBottom: "20px", borderRadius: "8px", maxWidth: "500px", margin: "20px auto" }
+    container: { 
+        padding: "20px", 
+        textAlign: "center", 
+        marginTop: "80px" // Adjust to match navbar height
+    },
+    orderCard: { 
+        border: "1px solid #ccc", 
+        padding: "15px", 
+        marginBottom: "20px", 
+        borderRadius: "8px", 
+        maxWidth: "500px", 
+        margin: "20px auto" 
+    }
 };
+
 
 export default MyOrders;
