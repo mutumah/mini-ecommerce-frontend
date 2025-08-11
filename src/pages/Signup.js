@@ -13,7 +13,8 @@ const Signup = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
+    // ✅ Match the variable name used in Login.js
+    const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,7 +22,7 @@ const Signup = () => {
         setIsLoading(true);
 
         try {
-            const res = await fetch(`${API_BASE_URL}/api/auth/register`, {
+            const res = await fetch(`${API_BASE_URL}/api/users/register`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ name, email, password }),
@@ -35,11 +36,11 @@ const Signup = () => {
 
             console.log("✅ User Registered:", data);
 
-            // Save JWT token in localStorage
+            // Save JWT token
             localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.user));
 
-            // Dispatch user to Redux store
+            // Dispatch user to Redux
             dispatch(login(data.user));
 
             // Redirect to login
