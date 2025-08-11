@@ -54,6 +54,7 @@ const Signup = () => {
     };
 
     return (
+        <div className="auth-page">
         <div className="auth-container">
             <h2 className="auth-header">Create Your Account</h2>
             {error && <div className="error-message">{error}</div>}
@@ -110,6 +111,7 @@ const Signup = () => {
             <div className="auth-footer">
                 Already have an account? <a className="auth-link" href="/login">Sign in</a>
             </div>
+        </div>
         </div>
     );
 };

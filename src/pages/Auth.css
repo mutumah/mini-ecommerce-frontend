@@ -1,5 +1,14 @@
 /* Auth.css - Styles for Login and Signup components */
 
+.auth-page {
+    min-height: calc(100vh - 120px); /* 120px = navbar + footer combined height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    background-color: #f8f8f8; /* optional light bg for contrast */
+}
+
 .auth-container {
     max-width: 400px;
     margin: 100px auto; /* space from navbar and footer */
