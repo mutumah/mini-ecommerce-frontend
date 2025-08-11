@@ -24,19 +24,19 @@ const Cart = () => {
           <>
             <div className="cart-items">
               {cartItems.map(item => (
-                <div key={item.id} className="cart-item">
+                <div key={item._id} className="cart-item">
                   <div className="cart-item-info">
                     <h4>{item.name}</h4>
                     <p>${item.price.toFixed(2)}</p>
                   </div>
                   <div className="cart-item-qty">
-                    <button onClick={() => dispatch(decreaseQuantity(item.id))} disabled={item.quantity === 1}>-</button>
+                    <button onClick={() => dispatch(decreaseQuantity(item._id))} disabled={item.quantity === 1}>-</button>
                     <span>{item.quantity}</span>
-                    <button onClick={() => dispatch(increaseQuantity(item.id))}>+</button>
+                    <button onClick={() => dispatch(increaseQuantity(item._id))}>+</button>
                   </div>
                   <button
                     className="remove-btn"
-                    onClick={() => dispatch(removeFromCart(item.id))}
+                    onClick={() => dispatch(removeFromCart(item._id))}
                   >
                     Remove
                   </button>
