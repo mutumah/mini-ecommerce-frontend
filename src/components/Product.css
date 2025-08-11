@@ -18,12 +18,41 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
+/* 🖼 Image container for placeholder + fade-in */
+.image-wrapper {
+  position: relative;
+  min-height: 200px;
+  background-color: #f2f2f2;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Placeholder while image loads */
+.image-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 14px;
+  background-color: #eaeaea;
+}
+
+/* Fade-in effect for loaded images */
 .product-card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 16px;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.product-card img.loaded {
+  opacity: 1;
 }
 
 .product-card h3 {

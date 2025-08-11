@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/slices/cartSlice';
@@ -6,6 +6,7 @@ import './Product.css';
 
 const Product = ({ product }) => {
   const dispatch = useDispatch();
+  const [loaded, setLoaded] = useState(false); // Track when image has loaded
 
   const handleAddToCart = () => {
     dispatch(addToCart({ ...product, quantity: 1 }));
@@ -23,12 +24,21 @@ const Product = ({ product }) => {
 
   return (
     <div className="product-card" data-aos="fade-up">
-      <img
-        src={imageSrc}
-        alt={product.name}
-        crossOrigin="anonymous"
-        onError={(e) => { e.target.src = "/images/placeholder.png"; }}
-      />
+      <div className="image-wrapper">
+        {!loaded && <div className="image-placeholder">Loading...</div>}
+        <img
+          src={imageSrc}
+          alt={product.name}
+          crossOrigin="anonymous"
+          loading="lazy" // Lazy load
+          onLoad={() => setLoaded(true)}
+          onError={(e) => { e.target.src = "/images/placeholder.png"; }}
+          style={{
+            opacity: loaded ? 1 : 0,
+            transition: 'opacity 0.3s ease-in-out'
+          }}
+        />
+      </div>
       <h3>{product.name}</h3>
       <p>${product.price.toFixed(2)}</p>
       <div className="product-actions">
